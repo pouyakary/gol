@@ -85,18 +85,6 @@
     }
 
 //
-// ─── SETUP GLIDER ───────────────────────────────────────────────────────────────
-//
-
-    fn setup_glider( game: &mut [bool] ) {
-        set_cell( 2, 1, game, true );
-        set_cell( 3, 2, game, true );
-        set_cell( 1, 3, game, true );
-        set_cell( 2, 3, game, true );
-        set_cell( 3, 3, game, true );
-    }
-
-//
 // ─── RUN GAME FRAME ─────────────────────────────────────────────────────────────
 //
 
@@ -163,6 +151,53 @@
     }
 
 //
+// ─── ELEMENTS ───────────────────────────────────────────────────────────────────
+//
+
+    fn setup_glider( game: &mut [bool] ) {
+        set_cell( 2, 1, game, true );
+        set_cell( 3, 2, game, true );
+        set_cell( 1, 3, game, true );
+        set_cell( 2, 3, game, true );
+        set_cell( 3, 3, game, true );
+    }
+
+    fn setup_toad( game: &mut [bool] ) {
+        let dx: usize = 10;
+        let dy: usize = 2;
+        set_cell( dx + 1, dy + 0, game, true );
+        set_cell( dx + 2, dy + 0, game, true );
+        set_cell( dx + 3, dy + 0, game, true );
+
+        set_cell( dx + 0, dy + 1, game, true );
+        set_cell( dx + 1, dy + 1, game, true );
+        set_cell( dx + 2, dy + 1, game, true );
+    }
+
+    fn setup_blinker( game: &mut [bool] ) {
+        let dx: usize = 20;
+        let dy: usize = 2;
+        set_cell( dx + 1, dy, game, true );
+        set_cell( dx + 2, dy, game, true );
+        set_cell( dx + 3, dy, game, true );
+    }
+
+    fn setup_beacon( game: &mut [bool] ) {
+        let dx: usize = 30;
+        let dy: usize = 2;
+
+        set_cell( dx + 0, dy + 0, game, true );
+        set_cell( dx + 1, dy + 0, game, true );
+        set_cell( dx + 0, dy + 1, game, true );
+        set_cell( dx + 1, dy + 1, game, true );
+
+        set_cell( dx + 2, dy + 2, game, true );
+        set_cell( dx + 3, dy + 2, game, true );
+        set_cell( dx + 2, dy + 3, game, true );
+        set_cell( dx + 3, dy + 3, game, true );
+
+    }
+//
 // ─── MAIN ───────────────────────────────────────────────────────────────────────
 //
 
@@ -170,7 +205,11 @@
         // where everything happens!
         let mut game: [ bool; SCREEN_SIZE ] =
             [ false; SCREEN_SIZE ];
+
         setup_glider( &mut game );
+        setup_toad( &mut game );
+        setup_blinker( &mut game );
+        setup_beacon( &mut game );
 
         loop {
             print_game( & game );
