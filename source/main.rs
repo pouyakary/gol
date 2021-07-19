@@ -17,6 +17,10 @@
         40;
     const HEIGHT: usize =
         24;
+    const ALIVE: bool =
+        true;
+    const DEAD: bool =
+        false;
     const SCREEN_SIZE: usize =
         WIDTH * HEIGHT;
 
@@ -101,7 +105,7 @@
 
                 // Any live cell with fewer than two live neighbors dies, as if by depopulation.
                 if neighbors < 2 {
-                    cell = false;
+                    cell = DEAD;
                 }
 
                 // Any live cell with two or three live neighbors lives on to the next generation.
@@ -112,7 +116,7 @@
 
                 // Any live cell with more than three live neighbors dies, as if by overpopulation.
                 else if neighbors > 3 {
-                    cell = false;
+                    cell = DEAD;
                 }
 
 
@@ -155,46 +159,46 @@
 //
 
     fn setup_glider( game: &mut [bool] ) {
-        set_cell( 2, 1, game, true );
-        set_cell( 3, 2, game, true );
-        set_cell( 1, 3, game, true );
-        set_cell( 2, 3, game, true );
-        set_cell( 3, 3, game, true );
+        set_cell( 2, 1, game, ALIVE );
+        set_cell( 3, 2, game, ALIVE );
+        set_cell( 1, 3, game, ALIVE );
+        set_cell( 2, 3, game, ALIVE );
+        set_cell( 3, 3, game, ALIVE );
     }
 
     fn setup_toad( game: &mut [bool] ) {
         let dx: usize = 10;
         let dy: usize = 2;
-        set_cell( dx + 1, dy + 0, game, true );
-        set_cell( dx + 2, dy + 0, game, true );
-        set_cell( dx + 3, dy + 0, game, true );
+        set_cell( dx + 1, dy + 0, game, ALIVE );
+        set_cell( dx + 2, dy + 0, game, ALIVE );
+        set_cell( dx + 3, dy + 0, game, ALIVE );
 
-        set_cell( dx + 0, dy + 1, game, true );
-        set_cell( dx + 1, dy + 1, game, true );
-        set_cell( dx + 2, dy + 1, game, true );
+        set_cell( dx + 0, dy + 1, game, ALIVE );
+        set_cell( dx + 1, dy + 1, game, ALIVE );
+        set_cell( dx + 2, dy + 1, game, ALIVE );
     }
 
     fn setup_blinker( game: &mut [bool] ) {
         let dx: usize = 20;
         let dy: usize = 2;
-        set_cell( dx + 1, dy, game, true );
-        set_cell( dx + 2, dy, game, true );
-        set_cell( dx + 3, dy, game, true );
+        set_cell( dx + 1, dy, game, ALIVE );
+        set_cell( dx + 2, dy, game, ALIVE );
+        set_cell( dx + 3, dy, game, ALIVE );
     }
 
     fn setup_beacon( game: &mut [bool] ) {
         let dx: usize = 30;
         let dy: usize = 2;
 
-        set_cell( dx + 0, dy + 0, game, true );
-        set_cell( dx + 1, dy + 0, game, true );
-        set_cell( dx + 0, dy + 1, game, true );
-        set_cell( dx + 1, dy + 1, game, true );
+        set_cell( dx + 0, dy + 0, game, ALIVE );
+        set_cell( dx + 1, dy + 0, game, ALIVE );
+        set_cell( dx + 0, dy + 1, game, ALIVE );
+        set_cell( dx + 1, dy + 1, game, ALIVE );
 
-        set_cell( dx + 2, dy + 2, game, true );
-        set_cell( dx + 3, dy + 2, game, true );
-        set_cell( dx + 2, dy + 3, game, true );
-        set_cell( dx + 3, dy + 3, game, true );
+        set_cell( dx + 2, dy + 2, game, ALIVE );
+        set_cell( dx + 3, dy + 2, game, ALIVE );
+        set_cell( dx + 2, dy + 3, game, ALIVE );
+        set_cell( dx + 3, dy + 3, game, ALIVE );
 
     }
 //
@@ -204,7 +208,7 @@
     fn main( ) {
         // where everything happens!
         let mut game: [ bool; SCREEN_SIZE ] =
-            [ false; SCREEN_SIZE ];
+            [ DEAD; SCREEN_SIZE ];
 
         setup_glider( &mut game );
         setup_toad( &mut game );
