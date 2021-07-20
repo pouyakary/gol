@@ -14,7 +14,7 @@
 //
 
     const WIDTH: usize =
-        40;
+        50;
     const HEIGHT: usize =
         24;
     const ALIVE: bool =
@@ -132,7 +132,7 @@
 //
 
     fn sleep( ) {
-        let sleep_time = time::Duration::from_millis( 150 );
+        let sleep_time = time::Duration::from_millis( 30 );
         thread::sleep( sleep_time );
     }
 
@@ -158,49 +158,75 @@
 // ─── ELEMENTS ───────────────────────────────────────────────────────────────────
 //
 
-    fn setup_glider( game: &mut [bool] ) {
-        set_cell( 2, 1, game, ALIVE );
-        set_cell( 3, 2, game, ALIVE );
-        set_cell( 1, 3, game, ALIVE );
-        set_cell( 2, 3, game, ALIVE );
-        set_cell( 3, 3, game, ALIVE );
+    fn setup_glider_gun( game: &mut [bool] ) {
+        let dx: usize = 3;
+        let dy: usize = 1;
+
+        // part 1
+        let part_1_dx: usize = 0;
+        let part_1_dy: usize = 4;
+        set_cell( dx + part_1_dx + 0, dy + part_1_dy + 0, game, ALIVE );
+        set_cell( dx + part_1_dx + 1, dy + part_1_dy + 0, game, ALIVE );
+        set_cell( dx + part_1_dx + 0, dy + part_1_dy + 1, game, ALIVE );
+        set_cell( dx + part_1_dx + 1, dy + part_1_dy + 1, game, ALIVE );
+
+        // part 2
+        let part_2_dx: usize = 10;
+        let part_2_dy: usize = 2;
+        set_cell( dx + part_2_dx + 2, dy + part_2_dy + 0, game, ALIVE );
+        set_cell( dx + part_2_dx + 3, dy + part_2_dy + 0, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 1, dy + part_2_dy + 1, game, ALIVE );
+        set_cell( dx + part_2_dx + 5, dy + part_2_dy + 1, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 0, dy + part_2_dy + 2, game, ALIVE );
+        set_cell( dx + part_2_dx + 6, dy + part_2_dy + 2, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 0, dy + part_2_dy + 3, game, ALIVE );
+        set_cell( dx + part_2_dx + 4, dy + part_2_dy + 3, game, ALIVE );
+        set_cell( dx + part_2_dx + 6, dy + part_2_dy + 3, game, ALIVE );
+        set_cell( dx + part_2_dx + 7, dy + part_2_dy + 3, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 0, dy + part_2_dy + 4, game, ALIVE );
+        set_cell( dx + part_2_dx + 6, dy + part_2_dy + 4, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 1, dy + part_2_dy + 5, game, ALIVE );
+        set_cell( dx + part_2_dx + 5, dy + part_2_dy + 5, game, ALIVE );
+
+        set_cell( dx + part_2_dx + 2, dy + part_2_dy + 6, game, ALIVE );
+        set_cell( dx + part_2_dx + 3, dy + part_2_dy + 6, game, ALIVE );
+
+        // part 3
+        let part_3_dx: usize = 20;
+        let part_3_dy: usize = 0;
+        set_cell( dx + part_3_dx + 4, dy + part_3_dy + 0, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 2, dy + part_3_dy + 1, game, ALIVE );
+        set_cell( dx + part_3_dx + 4, dy + part_3_dy + 1, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 0, dy + part_3_dy + 2, game, ALIVE );
+        set_cell( dx + part_3_dx + 1, dy + part_3_dy + 2, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 0, dy + part_3_dy + 3, game, ALIVE );
+        set_cell( dx + part_3_dx + 1, dy + part_3_dy + 3, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 0, dy + part_3_dy + 4, game, ALIVE );
+        set_cell( dx + part_3_dx + 1, dy + part_3_dy + 4, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 2, dy + part_3_dy + 5, game, ALIVE );
+        set_cell( dx + part_3_dx + 4, dy + part_3_dy + 5, game, ALIVE );
+
+        set_cell( dx + part_3_dx + 4, dy + part_3_dy + 6, game, ALIVE );
+
+        // part 4
+        let part_4_dx: usize = 34;
+        let part_4_dy: usize = 2;
+        set_cell( dx + part_4_dx + 0, dy + part_4_dy + 0, game, ALIVE );
+        set_cell( dx + part_4_dx + 1, dy + part_4_dy + 0, game, ALIVE );
+        set_cell( dx + part_4_dx + 0, dy + part_4_dy + 1, game, ALIVE );
+        set_cell( dx + part_4_dx + 1, dy + part_4_dy + 1, game, ALIVE );
     }
 
-    fn setup_toad( game: &mut [bool] ) {
-        let dx: usize = 10;
-        let dy: usize = 2;
-        set_cell( dx + 1, dy + 0, game, ALIVE );
-        set_cell( dx + 2, dy + 0, game, ALIVE );
-        set_cell( dx + 3, dy + 0, game, ALIVE );
-
-        set_cell( dx + 0, dy + 1, game, ALIVE );
-        set_cell( dx + 1, dy + 1, game, ALIVE );
-        set_cell( dx + 2, dy + 1, game, ALIVE );
-    }
-
-    fn setup_blinker( game: &mut [bool] ) {
-        let dx: usize = 20;
-        let dy: usize = 2;
-        set_cell( dx + 1, dy, game, ALIVE );
-        set_cell( dx + 2, dy, game, ALIVE );
-        set_cell( dx + 3, dy, game, ALIVE );
-    }
-
-    fn setup_beacon( game: &mut [bool] ) {
-        let dx: usize = 30;
-        let dy: usize = 2;
-
-        set_cell( dx + 0, dy + 0, game, ALIVE );
-        set_cell( dx + 1, dy + 0, game, ALIVE );
-        set_cell( dx + 0, dy + 1, game, ALIVE );
-        set_cell( dx + 1, dy + 1, game, ALIVE );
-
-        set_cell( dx + 2, dy + 2, game, ALIVE );
-        set_cell( dx + 3, dy + 2, game, ALIVE );
-        set_cell( dx + 2, dy + 3, game, ALIVE );
-        set_cell( dx + 3, dy + 3, game, ALIVE );
-
-    }
 //
 // ─── MAIN ───────────────────────────────────────────────────────────────────────
 //
@@ -210,10 +236,7 @@
         let mut game: [ bool; SCREEN_SIZE ] =
             [ DEAD; SCREEN_SIZE ];
 
-        setup_glider( &mut game );
-        setup_toad( &mut game );
-        setup_blinker( &mut game );
-        setup_beacon( &mut game );
+        setup_glider_gun( &mut game );
 
         loop {
             print_game( & game );
