@@ -3,4 +3,4 @@ Pouya's very first rust code :)
 
 <br>
 
-![Pouya's Game of Life](https://user-images.githubusercontent.com/2157285/126229245-2008c734-001d-4946-bfcc-0716110dd11b.gif)
+![Pouya's Game of Life running a Glider Gun](https://user-images.githubusercontent.com/2157285/126309907-c1a1e04a-2f96-44ea-b6be-0baa70b4fd4f.gif)
