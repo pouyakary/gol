@@ -14,7 +14,7 @@
 //
 
     const WIDTH: usize =
-        50;
+        41;
     const HEIGHT: usize =
         24;
     const ALIVE: bool =
