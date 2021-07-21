@@ -94,7 +94,7 @@
 
     fn run_game( previous_game: & [bool] ) -> [bool; SCREEN_SIZE] {
         let mut new_game: [ bool; SCREEN_SIZE ] =
-            [ false; SCREEN_SIZE ];
+            [ DEAD; SCREEN_SIZE ];
 
         for y in 0..HEIGHT {
             for x in 0..WIDTH {
