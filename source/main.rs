@@ -141,7 +141,7 @@
 //
 
     fn print_game( game: & [bool] ) {
-        print!("\x1B[2J\x1B[1;1H");
+        print!("\x1B[2J\x1B[1;1H"); // clear screen
         for y in 0..HEIGHT {
             for x in 0..WIDTH {
                 if get_cell( x, y, & game ) {
@@ -165,14 +165,17 @@
         // part 1
         let part_1_dx: usize = 0;
         let part_1_dy: usize = 4;
+
         set_cell( dx + part_1_dx + 0, dy + part_1_dy + 0, game, ALIVE );
         set_cell( dx + part_1_dx + 1, dy + part_1_dy + 0, game, ALIVE );
+
         set_cell( dx + part_1_dx + 0, dy + part_1_dy + 1, game, ALIVE );
         set_cell( dx + part_1_dx + 1, dy + part_1_dy + 1, game, ALIVE );
 
         // part 2
         let part_2_dx: usize = 10;
         let part_2_dy: usize = 2;
+
         set_cell( dx + part_2_dx + 2, dy + part_2_dy + 0, game, ALIVE );
         set_cell( dx + part_2_dx + 3, dy + part_2_dy + 0, game, ALIVE );
 
@@ -199,6 +202,7 @@
         // part 3
         let part_3_dx: usize = 20;
         let part_3_dy: usize = 0;
+
         set_cell( dx + part_3_dx + 4, dy + part_3_dy + 0, game, ALIVE );
 
         set_cell( dx + part_3_dx + 2, dy + part_3_dy + 1, game, ALIVE );
@@ -221,8 +225,10 @@
         // part 4
         let part_4_dx: usize = 34;
         let part_4_dy: usize = 2;
+
         set_cell( dx + part_4_dx + 0, dy + part_4_dy + 0, game, ALIVE );
         set_cell( dx + part_4_dx + 1, dy + part_4_dy + 0, game, ALIVE );
+
         set_cell( dx + part_4_dx + 0, dy + part_4_dy + 1, game, ALIVE );
         set_cell( dx + part_4_dx + 1, dy + part_4_dy + 1, game, ALIVE );
     }
