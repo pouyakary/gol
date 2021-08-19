@@ -1,5 +1,5 @@
 
-Pouya's very first rust code :)
+Pouya's very first Rust WASM/WASI code :)
 
 <br>
 

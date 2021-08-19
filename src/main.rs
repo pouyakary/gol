@@ -1,13 +1,10 @@
 
 //
-// Pouya's very first rust code :)
-//
-
-//
 // ─── IMPORTS ────────────────────────────────────────────────────────────────────
 //
 
-    use std::{thread, time};
+    use std::io;
+    use std::io::Write;
 
 //
 // ─── CONSTANTS ──────────────────────────────────────────────────────────────────
@@ -32,7 +29,7 @@
         return game[ y * WIDTH + x ]
     }
 
-    fn set_cell( x: usize, y: usize, game: &mut [bool], value: bool ) {
+    fn set_cell( x: usize, y: usize, game: & mut [bool], value: bool ) {
         game[ y * WIDTH + x ] =
             value;
     }
@@ -132,8 +129,8 @@
 //
 
     fn sleep( ) {
-        let sleep_time = time::Duration::from_millis( 30 );
-        thread::sleep( sleep_time );
+        //let sleep_time = time::Duration::from_millis( 30 );
+        //thread::sleep( sleep_time );
     }
 
 //
@@ -152,13 +149,19 @@
             }
             println!( "" );
         }
+
+        io::stdout( ).flush( ).unwrap( );
+
+        for _ in 0..2500000 {
+            sleep( )
+        }
     }
 
 //
 // ─── ELEMENTS ───────────────────────────────────────────────────────────────────
 //
 
-    fn setup_glider_gun( game: &mut [bool] ) {
+    fn setup_glider_gun( game: & mut [bool] ) {
         let dx: usize = 3;
         let dy: usize = 1;
 
@@ -242,7 +245,7 @@
         let mut game: [ bool; SCREEN_SIZE ] =
             [ DEAD; SCREEN_SIZE ];
 
-        setup_glider_gun( &mut game );
+        setup_glider_gun( & mut game );
 
         loop {
             print_game( & game );
